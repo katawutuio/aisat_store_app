@@ -35,8 +35,12 @@ class LoginScreen extends StatelessWidget {
               ),
               Text(
                 "To Explore the world exclusives.",
-                style: GoogleFonts.getFont('Lato',
-                    color: Color(0xFF0d120E), fontSize: 14, letterSpacing: 0.2),
+                style: GoogleFonts.getFont(
+                  'Lato',
+                  color: Color(0xFF0d120E),
+                  fontSize: 14,
+                  letterSpacing: 0.2,
+                ),
               ),
               Image.asset(
                 'assets/images/Illustration.png',
@@ -108,6 +112,30 @@ class LoginScreen extends StatelessWidget {
                   suffixIcon: Icon(Icons.visibility),
                 ),
               ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                width: 319,
+                height: 50,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  gradient: LinearGradient(colors: [
+                    Color(0xFF102DE1),
+                    Color(0xCC0D6EFF),
+                  ]),
+                ),
+                child: Center(
+                  child: Text(
+                    'Sign In',
+                    style: GoogleFonts.getFont(
+                      'Lato',
+                      fontSize: 17,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),
