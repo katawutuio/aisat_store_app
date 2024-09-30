@@ -1,3 +1,4 @@
+import 'package:aisat_store_app/views/screens/authentication_screen/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -86,6 +87,45 @@ class RegisterScreen extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
+              Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  'Full Name',
+                  style: GoogleFonts.getFont(
+                    'Nunito Sans',
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0.2,
+                  ),
+                ),
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                  fillColor: Colors.white,
+                  filled: true,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(9),
+                  ),
+                  focusedBorder: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                  labelText: 'enter your full name',
+                  labelStyle: GoogleFonts.getFont(
+                    'Nunito Sans',
+                    fontSize: 14,
+                    letterSpacing: 0.1,
+                  ),
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Image.asset(
+                      'assets/icons/user.jpeg',
+                      width: 20,
+                      height: 20,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
               TextFormField(
                 decoration: InputDecoration(
                   fillColor: Colors.white,
@@ -149,11 +189,19 @@ class RegisterScreen extends StatelessWidget {
                       letterSpacing: 1,
                     ),
                   ),
-                  Text(
-                    'Sign In',
-                    style: GoogleFonts.roboto(
-                      color: Color(0xFF103DE5),
-                      fontWeight: FontWeight.bold,
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return LoginScreen();
+                      }));
+                    },
+                    child: Text(
+                      'Sign In',
+                      style: GoogleFonts.roboto(
+                        color: Color(0xFF103DE5),
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],

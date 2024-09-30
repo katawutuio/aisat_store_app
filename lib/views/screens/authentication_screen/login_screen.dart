@@ -1,3 +1,4 @@
+import 'package:aisat_store_app/views/screens/authentication_screen/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -149,11 +150,19 @@ class LoginScreen extends StatelessWidget {
                       letterSpacing: 1,
                     ),
                   ),
-                  Text(
-                    'Sign Up',
-                    style: GoogleFonts.roboto(
-                      color: Color(0xFF103DE5),
-                      fontWeight: FontWeight.bold,
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return RegisterScreen();
+                      }));
+                    },
+                    child: Text(
+                      'Sign Up',
+                      style: GoogleFonts.roboto(
+                        color: Color(0xFF103DE5),
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],
