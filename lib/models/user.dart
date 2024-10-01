@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class User {
   final String id;
   final String fullName;
@@ -31,4 +33,12 @@ class User {
       'password': password
     };
   }
+
+  // Serialization: Convert Map to a Json String
+  // This method directly encodes the data from the Map into a Json String
+
+  // The json.encode() function converts a Dart object (such as Map or List)
+  // into a Json String representation , making it suitable for communication
+  // between difference systems.
+  String toJson() => json.encode(toMap());
 }
