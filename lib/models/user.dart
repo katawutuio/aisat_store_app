@@ -52,6 +52,8 @@ class User {
   // and cnvert it into a User object. if a field is not presend in the map,
   // it default  to an emty String.
 
+  // fromMap: This constructor take a Map<String, dynamic> and converts into a User object.
+  // its usefull when you already have the data in map format
   factory User.fromMap(Map<String, dynamic> map) {
     return User(
         id: map['_id'] as String? ?? "",
@@ -62,4 +64,9 @@ class User {
         locality: map['locality'] as String? ?? "",
         password: map['password'] as String? ?? "");
   }
+
+  // fromJson: This factory constructor take Json string, and decodes into a Map<String, dynamic>
+  // and then uses fromMap to convert that Map into a User Object.
+  factory User.fromJson(String source) =>
+      User.fromMap(json.decode(source) as Map<String, dynamic>);
 }
