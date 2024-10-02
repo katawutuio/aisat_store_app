@@ -23,7 +23,7 @@ class AuthController {
           headers: <String, String>{
             //Set the Headers for the request
             "Content-Type":
-                'application/json; charset=UTF8' // specifiy the context type as Json
+                'application/json; charset=UTF-8' // specifiy the context type as Json
           }); // Convert the user Ob  ject to Json for the request body
 
       manageHttpResponse(
@@ -32,6 +32,8 @@ class AuthController {
           onSuccess: () {
             showSnackBar(context, 'Account has been created.');
           });
-    } catch (e) {}
+    } catch (e) {
+      print(e);
+    }
   }
 }
