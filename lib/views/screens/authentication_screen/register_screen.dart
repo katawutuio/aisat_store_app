@@ -5,6 +5,9 @@ import 'package:google_fonts/google_fonts.dart';
 class RegisterScreen extends StatelessWidget {
   // const RegisterScreen({super.key});
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  late String email;
+  late String fullName;
+  late String password;
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +67,9 @@ class RegisterScreen extends StatelessWidget {
                     ),
                   ),
                   TextFormField(
+                    onChanged: (value) {
+                      email = value;
+                    },
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Enter your email';
@@ -110,6 +116,9 @@ class RegisterScreen extends StatelessWidget {
                     ),
                   ),
                   TextFormField(
+                    onChanged: (value) {
+                      fullName = value;
+                    },
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Enter your full name';
@@ -145,6 +154,9 @@ class RegisterScreen extends StatelessWidget {
                     height: 20,
                   ),
                   TextFormField(
+                    onChanged: (value) {
+                      password = value;
+                    },
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Enter your password';
