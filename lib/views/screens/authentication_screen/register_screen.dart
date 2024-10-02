@@ -1,3 +1,4 @@
+import 'package:aisat_store_app/controllers/auth_controller.dart';
 import 'package:aisat_store_app/views/screens/authentication_screen/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 class RegisterScreen extends StatelessWidget {
   // const RegisterScreen({super.key});
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final AuthController _authController = AuthController();
   late String email;
   late String fullName;
   late String password;
@@ -193,11 +195,13 @@ class RegisterScreen extends StatelessWidget {
                     height: 20,
                   ),
                   InkWell(
-                    onTap: () {
+                    onTap: () async {
                       if (_formKey.currentState!.validate()) {
-                        print("form validate success");
-                      } else {
-                        print("form validate fail");
+                        await _authController.signUpUsers(
+                            context: context,
+                            email: email,
+                            fullName: fullName,
+                            password: password);
                       }
                     },
                     child: Container(
