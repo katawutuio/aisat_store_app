@@ -13,13 +13,15 @@ class AuthController {
       required String password}) async {
     try {
       User user = User(
-          id: '',
-          fullName: fullName,
-          email: email,
-          state: '',
-          city: '',
-          locality: '',
-          password: password);
+        id: '',
+        fullName: fullName,
+        email: email,
+        state: '',
+        city: '',
+        locality: '',
+        password: password,
+        token: '',
+      );
       http.Response response = await http.post(Uri.parse('$uri/api/signup'),
           body: user.toJson(),
           headers: <String, String>{
