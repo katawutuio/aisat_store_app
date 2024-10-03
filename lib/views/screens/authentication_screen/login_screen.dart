@@ -3,12 +3,36 @@ import 'package:aisat_store_app/views/screens/authentication_screen/register_scr
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   // const LoginScreen({super.key});
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final AuthController _authController = AuthController();
   late String email;
   late String password;
+  bool isLoading = false;
+
+  loginUser() async {
+    setState(() {
+      isLoading = true;
+    });
+    await _authController
+        .signInUsers(
+      context: context,
+      email: email,
+      password: password,
+    )
+        .whenComplete(() {
+      _formKey.currentState!.reset();
+      setState(() {
+        isLoading = false;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -147,11 +171,7 @@ class LoginScreen extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       if (_formKey.currentState!.validate()) {
-                        _authController.signInUsers(
-                          context: context,
-                          email: email,
-                          password: password,
-                        );
+                        loginUser();
                       }
                     },
                     child: Container(
@@ -165,14 +185,18 @@ class LoginScreen extends StatelessWidget {
                         ]),
                       ),
                       child: Center(
-                        child: Text(
-                          'Sign In',
-                          style: GoogleFonts.getFont(
-                            'Lato',
-                            fontSize: 17,
-                            color: Colors.white,
-                          ),
-                        ),
+                        child: isLoading
+                            ? const CircularProgressIndicator(
+                                color: Colors.white,
+                              )
+                            : Text(
+                                'Sign In',
+                                style: GoogleFonts.getFont(
+                                  'Lato',
+                                  fontSize: 17,
+                                  color: Colors.white,
+                                ),
+                              ),
                       ),
                     ),
                   ),
