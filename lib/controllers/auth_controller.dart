@@ -3,6 +3,9 @@ import 'dart:convert';
 import 'package:aisat_store_app/global_variable.dart';
 import 'package:aisat_store_app/models/user.dart';
 import 'package:aisat_store_app/services/manage_http_response.dart';
+import 'package:aisat_store_app/views/screens/authentication_screen/login_screen.dart';
+import 'package:aisat_store_app/views/screens/main_screen.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class AuthController {
@@ -34,6 +37,8 @@ class AuthController {
           response: response,
           context: context,
           onSuccess: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => LoginScreen()));
             showSnackBar(context, 'Account has been created.');
           });
     } catch (e) {
@@ -62,6 +67,10 @@ class AuthController {
         response: response,
         context: context,
         onSuccess: () {
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => const MainScreen()),
+              (route) => false);
           showSnackBar(context, 'Signed In.');
         },
       );
