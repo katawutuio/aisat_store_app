@@ -8,15 +8,18 @@ class User {
   final String city;
   final String locality;
   final String password;
+  final String token;
 
-  User(
-      {required this.id,
-      required this.fullName,
-      required this.email,
-      required this.state,
-      required this.city,
-      required this.locality,
-      required this.password});
+  User({
+    required this.id,
+    required this.fullName,
+    required this.email,
+    required this.state,
+    required this.city,
+    required this.locality,
+    required this.password,
+    required this.token,
+  });
 
   // Serialization: Convert User object to a Map
   // Map: A Map is a collection of key-value pair
@@ -30,7 +33,8 @@ class User {
       'state': state,
       'city': city,
       'locality': locality,
-      'password': password
+      'password': password,
+      'token': token,
     };
   }
 
@@ -62,7 +66,8 @@ class User {
         state: map['state'] as String? ?? "",
         city: map['city'] as String? ?? "",
         locality: map['locality'] as String? ?? "",
-        password: map['password'] as String? ?? "");
+        password: map['password'] as String? ?? "",
+        token: map['token'] as String? ?? "");
   }
 
   // fromJson: This factory constructor take Json string, and decodes into a Map<String, dynamic>
