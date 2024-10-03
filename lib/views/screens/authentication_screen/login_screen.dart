@@ -1,3 +1,4 @@
+import 'package:aisat_store_app/controllers/auth_controller.dart';
 import 'package:aisat_store_app/views/screens/authentication_screen/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,6 +6,9 @@ import 'package:google_fonts/google_fonts.dart';
 class LoginScreen extends StatelessWidget {
   // const LoginScreen({super.key});
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final AuthController _authController = AuthController();
+  late String email;
+  late String password;
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +68,9 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   TextFormField(
+                    onChanged: (value) {
+                      email = value;
+                    },
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Enter your email';
@@ -99,6 +106,9 @@ class LoginScreen extends StatelessWidget {
                     height: 20,
                   ),
                   TextFormField(
+                    onChanged: (value) {
+                      password = value;
+                    },
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Enter your password';
@@ -137,9 +147,11 @@ class LoginScreen extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       if (_formKey.currentState!.validate()) {
-                        print('Login success');
-                      } else {
-                        print('Login fail');
+                        _authController.signInUsers(
+                          context: context,
+                          email: email,
+                          password: password,
+                        );
                       }
                     },
                     child: Container(

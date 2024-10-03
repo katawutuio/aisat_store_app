@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:aisat_store_app/global_variable.dart';
 import 'package:aisat_store_app/models/user.dart';
 import 'package:aisat_store_app/services/manage_http_response.dart';
@@ -33,7 +35,36 @@ class AuthController {
             showSnackBar(context, 'Account has been created.');
           });
     } catch (e) {
-      print(e);
+      showSnackBar(context, e.toString());
+    }
+  }
+
+  // signin users function
+  Future<void> signInUsers({
+    required context,
+    required String email,
+    required String password,
+  }) async {
+    try {
+      http.Response response = await http.post(Uri.parse('$uri/api/signin'),
+          body: jsonEncode({
+            // ส่งค่าไม่กี่ตัวใช้แค่ jsonEncode ก็ได้
+            'email': email,
+            'password': password
+          }),
+          headers: <String, String>{
+            "Content-Type": 'application/json; charget=UTF-8'
+          });
+
+      manageHttpResponse(
+        response: response,
+        context: context,
+        onSuccess: () {
+          showSnackBar(context, 'Signed In.');
+        },
+      );
+    } catch (e) {
+      showSnackBar(context, e.toString());
     }
   }
 }
