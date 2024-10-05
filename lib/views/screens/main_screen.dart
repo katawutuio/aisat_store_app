@@ -1,3 +1,8 @@
+import 'package:aisat_store_app/views/screens/nav_screen/account_screen.dart';
+import 'package:aisat_store_app/views/screens/nav_screen/cart_screen.dart';
+import 'package:aisat_store_app/views/screens/nav_screen/favorite_screen.dart';
+import 'package:aisat_store_app/views/screens/nav_screen/home_screen.dart';
+import 'package:aisat_store_app/views/screens/nav_screen/stores_screen.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
@@ -9,6 +14,13 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _pageIndex = 0;
+  final List<Widget> _pages = [
+    HomeScreen(),
+    FavoriteScreen(),
+    StoresScreen(),
+    CartScreen(),
+    AccountScreen(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +67,7 @@ class _MainScreenState extends State<MainScreen> {
                 ),
                 label: "Account"),
           ]),
+      body: _pages[_pageIndex],
     );
   }
 }
