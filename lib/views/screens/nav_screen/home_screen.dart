@@ -1,3 +1,4 @@
+import 'package:aisat_store_app/views/screens/nav_screen/widgets/header_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -6,8 +7,13 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-        body: Center(
-      child: Text('Home'),
-    ));
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            HeaderWidget(),
+          ],
+        ),
+      ),
+    );
   }
 }
