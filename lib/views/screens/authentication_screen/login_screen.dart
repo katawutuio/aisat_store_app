@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -60,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     "Login your Account",
                     style: GoogleFonts.getFont(
                       'Lato',
-                      color: Color(0xFF0d120E),
+                      color: const Color(0xFF0d120E),
                       fontWeight: FontWeight.bold,
                       letterSpacing: 0.2,
                       fontSize: 23,
@@ -70,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     "To Explore the world exclusives.",
                     style: GoogleFonts.getFont(
                       'Lato',
-                      color: Color(0xFF0d120E),
+                      color: const Color(0xFF0d120E),
                       fontSize: 14,
                       letterSpacing: 0.2,
                     ),
@@ -126,7 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   TextFormField(
@@ -162,10 +164,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: 20,
                         ),
                       ),
-                      suffixIcon: Icon(Icons.visibility),
+                      suffixIcon: const Icon(Icons.visibility),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   InkWell(
@@ -179,7 +181,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 50,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        gradient: LinearGradient(colors: [
+                        gradient: const LinearGradient(colors: [
                           Color(0xFF102DE1),
                           Color(0xCC0D6EFF),
                         ]),
@@ -200,7 +202,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Row(
@@ -223,7 +225,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Text(
                           'Sign Up',
                           style: GoogleFonts.roboto(
-                            color: Color(0xFF103DE5),
+                            color: const Color(0xFF103DE5),
                             fontWeight: FontWeight.bold,
                           ),
                         ),
